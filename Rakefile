@@ -9,7 +9,7 @@ if RUBY_PLATFORM.include? "darwin"
   ZIP = "zip -r"
   MOVE = "mv"
 else
-  ZIP = "7za a -r -tzip"
+  ZIP = "7z a -r -tzip"
   MOVE = "move /y"
 end
 
@@ -17,6 +17,7 @@ end
 desc "Create RBZ file"
 task :zipit do
   puts "Creating RBZ file..."
+  puts "using:  #{ZIP} #{base_name} #{base_name} #{base_name}.rb"
   success = system "#{ZIP} #{base_name} #{base_name} #{base_name}.rb"
   if success
     system "#{MOVE} #{base_name}.zip #{base_name}_#{version}.rbz"
